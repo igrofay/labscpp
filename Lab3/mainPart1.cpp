@@ -17,11 +17,13 @@ int main(){
     cin >> dx;
     printf("|   X   |   Z   |\n");
     for(double x = xn;x<=xk;x+=dx){
-        double cube = (a + x*x)/log(b+x);
-        double z = (a-b) * pow(cube,1/3);
-        sum += z;
-        mul *= z;
-        if (z <0) negativeNumbers++;
+        double part1 = (a + x*x)/log(b+x);
+        double z = (a-b) * pow(part1,1/3.0);
+        if (!isnan(z)){
+            sum += z;
+            mul *= z;
+            if (z <0) negativeNumbers++;
+        }
         printf("| %5.2lf | %5.2lf |\n", x, z);
     }
     cout << "Sum of z: " << sum << endl
